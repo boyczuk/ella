@@ -1,39 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ❤️</title>
+    <title>I love you Ella Foster</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #ffe6f2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 20px;
-            background-color: #ffe6e6;
         }
+
         h1 {
             color: #ff3366;
+            font-size: 22px;
         }
-        .message {
-            font-size: 18px;
-            color: #333;
-            max-width: 400px;
-            margin: 20px auto;
+
+        .heart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10%;
         }
-        .heart {
-            font-size: 50px;
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .gift {
+            width: 50px;
+            height: 50px;
+            background-color: #ff3366;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            margin: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gift:hover {
+            transform: scale(1.1);
+        }
+
+        /* Style for opened gifts */
+        .gift.opened {
+            background-color: #ff99aa;
+        }
+
+        /* Full-screen Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
             color: #ff3366;
-            animation: heartbeat 1s infinite alternate;
+            font-size: 18px;
+            position: relative;
         }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.2); }
+
+        .popup img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            background: none;
+            border: none;
+        }
+
+        /* Hidden placeholder gifts to maintain heart shape */
+        .hidden {
+            visibility: hidden;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
         }
     </style>
 </head>
+
 <body>
-    <h1>For My Love ❤️</h1>
-    <p class="message">You make every day special, and I just wanted to say how much I appreciate you! 💕</p>
-    <div class="heart">❤️</div>
+
+    <h1>Click the gifts to reveal surprises! 🎁</h1>
+
+    <div class="heart-container">
+        <div class="row">
+            <div class="hidden"></div>
+            <div class="gift"
+                onclick="openGift(this, '<b>Reason #1 why I love you:</b><br> You are the most open minded person I\'ve ever had the pleasure of meeting let alone dating.')">
+                🎁</div>
+            <div class="hidden"></div>
+            <div class="hidden"></div>
+            <div class="gift" onclick="openGift(this, '<img src=\'UsMexico.jpg\' alt=\'Mexicooooo\'>')">🎁</div>
+            <div class="hidden"></div>
+        </div>
+
+        <div class="row">
+            <div class="gift" onclick="openGift(this, '<img src=\'EllaYell.jpg\' alt=\'Us at an ethiopian bar with sander\'>')">🎁</div>
+            <div class="gift"
+                onclick="openGift(this, '<b>Reason #2 why I love you:</b><br> You have beautiful brown eyes that literally glow in the sun.')">
+                🎁</div>
+            <div class="gift" onclick="openGift(this, '<img src=\'UsMexico2.jpg\' alt=\'Mexicooooo\'>')">🎁</div>
+            <div class="gift"
+                onclick="openGift(this, '<b>Reason #3 why I love you:</b><br> You\'re so nice to me, and you make me feel so good about being myself.')">
+                🎁</div>
+            <div class="gift" onclick="openGift(this, '<img src=\'MeCold.jpg\' alt=\'Freezing\'>')">🎁</div>
+        </div>
+
+        <div class="row">
+            <div class="hidden"></div>
+            <div class="gift" onclick="openGift(this, '<img src=\'GoonerGilbert.jpg\' alt=\'Saucey\'>')">😈
+            </div>
+            <div class="gift" onclick="openGift(this, '<img src=\'Cuteee.jpg\' alt=\'Cuteeee\'>')">🎁</div>
+            <div class="gift"
+                onclick="openGift(this, '<b>Reason #4 why I love you:</b><br> You always have something interesting to say and are always happy to talk with me. I love all the random wacky conversations we get into every time I see you.')">
+                🎁</div>
+            <div class="gift" onclick="openGift(this, '<img src=\'LucyHat.jpg\' alt=\'Lucifer the cat\'>')">🎁</div>
+            <div class="hidden"></div>
+        </div>
+
+        <div class="row">
+            <div class="hidden"></div>
+            <div class="hidden"></div>
+            <div class="gift" onclick="openGift(this, '<img src=\'UsGettingTree.jpg\' alt=\'Christmas Tree\'>')">🎁</div>
+            <div class="gift" onclick="openGift(this, '<img src=\'HoudiniAndLittleShit.jpg\' alt=\'HoudiniAndMurphy\'>')">🎁</div>
+            <div class="hidden"></div>
+            <div class="hidden"></div>
+        </div>
+
+        <div class="row">
+            <div class="hidden"></div>
+            <div class="hidden"></div>
+            <div class="gift"
+                onclick="openGift(this, '<b>Reason #5 why I love you:</b><br> This list does not end at 5 but unfortunately thats all the space I have for this heart shape to work but you\'re the same kind of weird as me. We are both weird. Two weirdos who find weird things cool, just goobing it up. <br> I love you so much. Happy 6 month anniversary bats <3')">
+                🎁</div>
+            <div class="hidden"></div>
+            <div class="hidden"></div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Popup -->
+    <div class="popup" id="popup" onclick="closePopup(event)">
+        <button class="close-btn" onclick="closePopup(event)">✖</button>
+        <div class="popup-content" id="popup-content" onclick="event.stopPropagation();"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('popup').style.display = "none";
+    
+            // Track all gifts
+            const gifts = document.querySelectorAll(".gift");
+            let openedGifts = new Set();
+    
+            gifts.forEach((gift) => {
+                gift.addEventListener("click", function () {
+                    openedGifts.add(gift);
+    
+                    // Check if all gifts have been opened
+                    if (openedGifts.size === gifts.length) {
+                        document.querySelector("h1").innerText = "I love you bats, thanks for being the best girlfriend I could ever ask for <3";
+                    }
+                });
+            });
+        });
+    
+        function openGift(gift, content) {
+            document.getElementById('popup-content').innerHTML = content;
+            document.getElementById('popup').style.display = "flex";
+    
+            // Mark the gift as opened
+            gift.classList.add("opened");
+        }
+    
+        function closePopup(event) {
+            if (!event || event.target.id === "popup") {
+                document.getElementById('popup').style.display = "none";
+            }
+        }
+    </script>
+    
+
+
 </body>
+
 </html>
